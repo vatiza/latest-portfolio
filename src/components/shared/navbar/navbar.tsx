@@ -1,4 +1,6 @@
 "use client";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/16/solid";
 import { useState } from "react";
 
@@ -17,13 +19,18 @@ const Navbar = () => {
         </a>
       </li>
       <li>
+        <a href="#" className="">
+          Service
+        </a>
+      </li>
+      <li>
         <a href="https://rakibs.live/" className="">
           Portfolio
         </a>
       </li>
       <li>
         <a href="#" className="">
-          Client
+          Contact
         </a>
       </li>
 
@@ -32,42 +39,32 @@ const Navbar = () => {
           Blog
         </a>
       </li>
-      <li>
-        <a href="https://rakibs.live/blogs" className="">
-          Contact
-        </a>
-      </li>
     </>
   );
 
   return (
-    <div className="sticky  top-0 z-20 ">
-      <div className="px-7 py-3  lg:px-40">
-        <div className="flex justify-between">
-          <div className="flex items-center gap-3 ">
-            <h1 className="font-poppins text-2xl font-semibold">Rakib</h1>
-            <div className="hidden lg:flex items-center font-raleway list-none gap-5 ml-9">
-              {navLink}
-            </div>
+    <div className="sticky  top-0 z-10 bg-white ">
+      <div className="px-5 lg:px-20 pt-4">
+        <div className="flex items-center justify-between ">
+          <div className="flex items-center gap-2">
+            <Avatar>
+              <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+            <h1>Rakib</h1>
           </div>
-
-          <div className="hidden lg:flex items-center ml-[220px]">
-            <button className="uppercase px-3 py-2 bg-yellow-400 font-roboto text-black text-sm font-semibold">
-              book a table{" "}
-            </button>
-          </div>
-          <div className="flex gap-6 ">
-            <div className="lg:hidden flex items-center">
-              {toggleMenu ? (
-                <button onClick={() => setToggleMenu(!toggleMenu)}>
-                  <XMarkIcon className="h-6" />
-                </button>
-              ) : (
-                <button onClick={() => setToggleMenu(!toggleMenu)}>
-                  <Bars3BottomRightIcon className="h-6" />
-                </button>
-              )}
-            </div>
+          <div className="hidden lg:flex list-none gap-3">{navLink}</div>
+          <Button className="hidden lg:flex">Resume</Button>
+          <div className=" lg:hidden">
+            {toggleMenu ? (
+              <button onClick={() => setToggleMenu(!toggleMenu)}>
+                <XMarkIcon className="h-6" />
+              </button>
+            ) : (
+              <button onClick={() => setToggleMenu(!toggleMenu)}>
+                <Bars3BottomRightIcon className="h-6" />
+              </button>
+            )}
           </div>
         </div>
       </div>
